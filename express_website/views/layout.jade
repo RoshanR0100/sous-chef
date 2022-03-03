@@ -1,0 +1,22 @@
+doctype html
+html(lang='en')
+  head
+   
+    link(href='/stylesheets/css/bootstrap.css', rel='stylesheet')
+  body
+    nav.navbar.navbar-dark.bg-dark
+      .container
+      .navbar-header
+        a.navbar--brand(href='#') PC Repairs
+        ul.navbar-nav.mr-auto
+          li.nav-item
+            a.nav-link(href='/') Home
+          li.nav-item
+            a.nav-link(href='/about') About
+          li.nav-item
+            a.nav-link(href='/contact') Contact
+    .container
+    block content
+    hr
+    footer.container
+      p(class='text-center') © Company 2017-2020
