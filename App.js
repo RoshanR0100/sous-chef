@@ -27,7 +27,9 @@ function StackNavigator() {
             headerTintColor: color,
             headerTitleStyle: {
               fontWeight: 'bold',
-            },}} />
+            },
+            headerTitleAlign: 'center',
+            }} />
         <Stack.Screen 
           name="Recipes" 
           component={Recipes} 
@@ -36,7 +38,9 @@ function StackNavigator() {
             headerTintColor: color,
             headerTitleStyle: {
               fontWeight: 'bold',
-            },}} />
+            },
+            headerTitleAlign: 'center',
+            }} />
         <Stack.Screen 
           name="RecipeData" 
           component={RecipeData} 
@@ -45,7 +49,9 @@ function StackNavigator() {
             headerTintColor: color,
             headerTitleStyle: {
               fontWeight: 'bold',
-            },}}/>
+            },
+            headerTitleAlign: 'center',
+            }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

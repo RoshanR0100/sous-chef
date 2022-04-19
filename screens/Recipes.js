@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button, ScrollView, StyleSheet } from "react-native";
+import { View, Text, Button, ScrollView, StyleSheet, Image, Pressable } from "react-native";
 import {Card}  from 'react-native-elements';
+import Line from '../shared/Line';
 
 const color = "#5EC87C";
 
@@ -20,28 +21,36 @@ const Recipes = ({ route, navigation }) => {
     console.log(route.params.paramKey);
   }, [])
 
-  return (
-    <ScrollView>
-      <View>
-        {recipeList.map((item) => {
-          return(
-            <Card key={`${item.id}`} style={styles.optionsCard}>
-              <Card.Title>{item.title}</Card.Title>
-              <Card.Divider />
-              <Card.Image
-                style={{ padding: 0, marginBottom: 10 }}
-                source={{
-                  uri:
-                    `${item.image}`,
-                }}
-              />
-              <Button color = {color} style={styles.button} onPress={()=> {navigation.navigate('RecipeData', {paramKey: item.id,})}} title='Show me the recipe!' />
-            </Card>
-          )
-        })}
+    return(
+      <View style={styles.main}>
+        {recipeList.length ?  
+        <ScrollView>
+          {recipeList.map((item) => {
+            return(
+              <View key={item.id} style={styles.optionsCard}>
+                <Text style={styles.headerText}>{item.title}</Text>
+                <Line />
+                <Image
+                  style={styles.image}
+                  source={{
+                    uri:
+                      `${item.image}`,
+                  }}
+                />
+                <Pressable onPress={()=> {navigation.navigate('RecipeData', {paramKey: item.id,})}}>
+                  <Text style={styles.optionText}>SHOW ME THE RECIPE!</Text>
+                </Pressable>
+              </View>
+            )
+          })}
+        </ScrollView>
+      :
+        <View style={styles.main}>
+          <Text style={styles.headerText}>Sorry, we couldn't find a recipe for you in our database</Text>
+        </View>
+        }
       </View>
-    </ScrollView>
-  );
+    );
 
   function getRecipeList(x) {
     axios.get(apiUrl + x + apiKey)
@@ -54,14 +63,39 @@ const Recipes = ({ route, navigation }) => {
 export default Recipes;
 
 const styles = StyleSheet.create({
-
   optionsCard: {
-    alignItems: 'center',  
-    borderRadius: 45
+    borderRadius: 16,
+    justifyContent: 'space-evenly',
+    shadowColor: '#171717',
+    shadowOffset: {width: -2, height: 4},
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    backgroundColor: 'white',
+    margin: 20,
+    padding: 20,
+    alignItems: 'center',
   },
-
-  button: {
-    margin: 10,
-    maxWidth: "60%",
+  headerText: {
+    fontWeight: 'bold',
+    fontSize: 22,
+    color: color,
+    flex: 1,
+    flexDirection: 'row',
+  },
+  optionText: {
+    fontWeight: 'bold',
+    fontSize: 18,
+    color: color
+  },
+  image: {
+    paddingHorizontal: 145,
+    paddingVertical: 100,
+    margin: 20,
+  },
+  main: {
+    flexDirection: 'column',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

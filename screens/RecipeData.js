@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import { View, Text, ScrollView } from "react-native";
+import { View, Text, ScrollView, StyleSheet, Image } from "react-native";
 import { Card } from 'react-native-elements';
 import HTMLView from 'react-native-htmlview';
 
+const color = "#5EC87C";
 
 const recipeDataURL = 'https://api.spoonacular.com/recipes/';
 
@@ -14,8 +15,8 @@ const RecipeData = ({route, navigation}) => {
     const [Summary, setSummary] = useState('');
     const [ImageUrl, setImageURL] = useState(''); 
     const [Servings, setServings] = useState('');
-    const [AnalysedInstructions, setAnalysedInstructions] = useState([]);
     const [ExtendedIngredients, setExtendedIngredients ] = useState([]);
+    const [Instructions, setInstructions ] = useState('');
 
     //Get the recipe information of the selected recipe and set it to the state values on Screen Start
     useEffect(() => {
@@ -24,30 +25,29 @@ const RecipeData = ({route, navigation}) => {
 
     return(
     <ScrollView>
-        <Card>
-
-        <Card.Image
-              style={{ padding: 0 }}
-              source={{
-                uri:
-                  ImageUrl,
-              }}
-            />
-        <Text>Name: {RecipeName}</Text>
-        <Text>Servings: {Servings}</Text>
-        <HTMLView value={Summary} />
-        <Text>Ingredients:</Text>
-        {ExtendedIngredients.map((ingredient) => {
-            <View key={ingredient.id}>
-                <Text>{ingredient.original}</Text>
+        <View style={styles.optionsCard}>
+            <Image
+                style={styles.image}
+                source={{
+                    uri:
+                    ImageUrl,
+                }}
+                />
+            <Text style={styles.optionText}>{RecipeName}</Text>
+            <Text style={styles.optionTextBlack}>Ingredients:</Text>
+            <View>
+                {ExtendedIngredients.map((ing) => {
+                    return(
+                        <View key={ing.id}>
+                            <Text style={styles.optionTextBlackSmall}> -{ing.originalName}</Text>
+                        </View>
+                    );
+                })}
             </View>
-        })}
-        {/* {AnalysedInstructions.map((instruction) => {
-            <View key={instruction.id}>
-                <Text>{}</Text>
-            </View>
-        })} */}
-        </Card>
+            <Text style={styles.optionTextBlack}>Recipe:</Text>
+            <HTMLView value={Instructions} stylesheet={styles} />
+            <Text style={styles.optionTextBlack}>Servings: {Servings}</Text>
+        </View>
     </ScrollView>);
 
     function getRecipeData(x) {
@@ -57,11 +57,51 @@ const RecipeData = ({route, navigation}) => {
             setSummary(response.data.summary);
             setImageURL(response.data.image);
             setServings(response.data.servings);
-            setAnalysedInstructions(response.data.analysedInstructions);
+            setInstructions(response.data.instructions);
+            console.log(response.data)
             setExtendedIngredients(response.data.extendedIngredients);
-            console.log(response.data.image);
         })
     }
 }
 
 export default RecipeData
+
+const styles = StyleSheet.create({
+    optionsCard: {
+        borderRadius: 16,
+        justifyContent: 'space-evenly',
+        shadowColor: '#171717',
+        shadowOffset: {width: -2, height: 4},
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+        backgroundColor: 'white',
+        margin: 20,
+        padding: 20,
+        alignItems: 'flex-start',
+      },
+      headerText: {
+        fontWeight: 'bold',
+        fontSize: 22,
+        color: color
+      },
+      optionText: {
+        fontWeight: 'bold',
+        fontSize: 18,
+        color: color
+      },
+      optionTextBlack: {
+        fontWeight: 'bold',
+        fontSize: 18,
+        color: 'black',
+      },
+      optionTextBlackSmall: {
+        fontWeight: 'bold',
+        fontSize: 15,
+        color: 'black',
+      },
+      image: {
+        paddingHorizontal: 145,
+        paddingVertical: 100,
+        marginVertical: 10,
+      },
+});
