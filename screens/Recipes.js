@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, Button, ScrollView, StyleSheet, Image, Pressable } from "react-native";
 import {Card}  from 'react-native-elements';
 import Line from '../shared/Line';
+import { AdMobBanner } from 'expo-ads-admob';
 
 const color = "#5EC87C";
 
@@ -22,7 +23,12 @@ const Recipes = ({ route, navigation }) => {
   }, [])
 
     return(
-      <View style={styles.main}>
+      <View>
+        <AdMobBanner 
+                bannerSize="banner"
+                adUnitId="ca-app-pub-7021618864134355/8942689867"
+                servePersonalizedAds={false}
+            />
         {recipeList.length ?  
         <ScrollView>
           {recipeList.map((item) => {
@@ -45,9 +51,7 @@ const Recipes = ({ route, navigation }) => {
           })}
         </ScrollView>
       :
-        <View style={styles.main}>
-          <Text style={styles.headerText}>Sorry, we couldn't find a recipe for you in our database</Text>
-        </View>
+        <Text style={styles.sorryText}>Sorry, we couldn't find a recipe for you in our database</Text>
         }
       </View>
     );
@@ -92,10 +96,15 @@ const styles = StyleSheet.create({
     paddingVertical: 100,
     margin: 20,
   },
-  main: {
-    flexDirection: 'column',
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+  sorryText: {
+    margin: 10,
+    fontWeight: 'bold',
+    fontSize: 22,
+    color: color,
+    alignSelf: 'center',
+  }
+  // main: {
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  // },
 });

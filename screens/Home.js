@@ -5,6 +5,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import Line from '../shared/Line';
 import CheckBox  from 'react-native-check-box';
+import { AdMobBanner } from 'expo-ads-admob';
 
 const color = "#5EC87C";
 const darkColor = "#349850";
@@ -48,9 +49,13 @@ const Home = ({navigation}) => {
         navigation.navigate('Recipes', {paramKey: param_Key});
     }
     
-
     return (  
         <ScrollView style={styles.mainView}>
+            <AdMobBanner 
+                bannerSize="banner"
+                adUnitId="ca-app-pub-7021618864134355/8942689867"
+                servePersonalizedAds={false}
+            />
             <View style={styles.optionsCard}>
                 <Text style={styles.headerText}>DIET (OPTIONAL)</Text>
                 <Line />

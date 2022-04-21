@@ -2,7 +2,7 @@
   "expo": {
     "name": "sous-chef",
     "slug": "sous-chef",
-    "version": "1.0.1",
+    "version": "1.0.4",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -21,14 +21,18 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"
       },
       "permissions": [],
-      "package": "com.roshan0100.souschef"
+      "package": "com.roshan0100.souschef",
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-7021618864134355~2330547037"
+      },
+      "versionCode" : 4
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/icon.png"
     }
   }
 }
