@@ -52,9 +52,8 @@ const Home = ({navigation}) => {
     return (  
         <ScrollView style={styles.mainView}>
             <AdMobBanner 
-                bannerSize="banner"
+                bannerSize="fullBanner"
                 adUnitId="ca-app-pub-7021618864134355/8942689867"
-                servePersonalizedAds={false}
             />
             <View style={styles.optionsCard}>
                 <Text style={styles.headerText}>DIET (OPTIONAL)</Text>

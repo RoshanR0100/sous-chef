@@ -24,13 +24,13 @@ const Recipes = ({ route, navigation }) => {
 
     return(
       <View>
-        <AdMobBanner 
-                bannerSize="banner"
-                adUnitId="ca-app-pub-7021618864134355/8942689867"
-                servePersonalizedAds={false}
-            />
         {recipeList.length ?  
         <ScrollView>
+          <AdMobBanner 
+                  bannerSize="banner"
+                  adUnitId="ca-app-pub-7021618864134355/4250418770"
+                  servePersonalizedAds={false}
+              />
           {recipeList.map((item) => {
             return(
               <View key={item.id} style={styles.optionsCard}>
@@ -51,7 +51,14 @@ const Recipes = ({ route, navigation }) => {
           })}
         </ScrollView>
       :
-        <Text style={styles.sorryText}>Sorry, we couldn't find a recipe for you in our database</Text>
+        <View>
+          <AdMobBanner 
+                bannerSize="banner"
+                adUnitId="ca-app-pub-7021618864134355/4250418770"
+                servePersonalizedAds={false}
+            />
+          <Text style={styles.sorryText}>Sorry, we couldn't find a recipe for you in our database</Text>
+        </View>
         }
       </View>
     );
