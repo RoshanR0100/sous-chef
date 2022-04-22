@@ -18,7 +18,10 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.roshan0100.souschef"
+      "bundleIdentifier": "com.roshan0100.souschef",
+      "config": {
+        "googleMobileAdsAppId": "ca-app-pub-7021618864134355~3010339352"
+      }
     },
     "android": {
       "adaptiveIcon": {

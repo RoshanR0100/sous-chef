@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, Button, ScrollView, StyleSheet, Image, Pressable } from "react-native";
 import {Card}  from 'react-native-elements';
 import Line from '../shared/Line';
-import { AdMobBanner } from 'expo-ads-admob';
+import BannerAd from '../shared/BannerAd';
 
 const color = "#5EC87C";
 
@@ -26,11 +26,7 @@ const Recipes = ({ route, navigation }) => {
       <View>
         {recipeList.length ?  
         <ScrollView>
-          <AdMobBanner 
-                  bannerSize="banner"
-                  adUnitId="ca-app-pub-7021618864134355/4250418770"
-                  servePersonalizedAds={false}
-              />
+          <BannerAd />
           {recipeList.map((item) => {
             return(
               <View key={item.id} style={styles.optionsCard}>
