@@ -3,7 +3,6 @@ import axios from 'axios';
 import { View, Text, ScrollView, StyleSheet, Image } from "react-native";
 import { Card } from 'react-native-elements';
 import HTMLView from 'react-native-htmlview';
-import BannerAd from '../shared/BannerAd';
 
 const color = "#5EC87C";
 
@@ -26,7 +25,6 @@ const RecipeData = ({route, navigation}) => {
 
     return(
     <ScrollView>
-        <BannerAd />
         <View style={styles.optionsCard}>
             <Image
                 style={styles.image}

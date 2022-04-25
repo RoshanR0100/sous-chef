@@ -135,8 +135,12 @@ android {
         applicationId 'com.roshan0100.souschef'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 4
-        versionName "1.0.4"
+        versionCode 5
+        versionName "1.0.5"
+        multiDexEnabled true
+        aaptOptions{
+            noCompress "tflite", "model"
+        }
     }
     splits {
         abi {
@@ -187,6 +191,9 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation platform('com.google.firebase:firebase-bom:29.3.1')
 
     def isGifEnabled = (findProperty('expo.gif.enabled') ?: "") == "true";
     def isWebpEnabled = (findProperty('expo.webp.enabled') ?: "") == "true";
@@ -241,4 +248,5 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: new File(["node", "--print", "require.resolve('@react-native-community/cli-platform-android/package.json')"].execute(null, rootDir).text.trim(), "../native_modules.gradle");
+apply plugin: 'com.google.gms.google-services'
 applyNativeModulesAppBuildGradle(project)

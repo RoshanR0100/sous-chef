@@ -1,9 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { View, Text, Button, ScrollView, StyleSheet, Image, Pressable } from "react-native";
-import {Card}  from 'react-native-elements';
+import { View, Text, ScrollView, StyleSheet, Image, Pressable } from "react-native";
 import Line from '../shared/Line';
-import BannerAd from '../shared/BannerAd';
 
 const color = "#5EC87C";
 
@@ -26,7 +24,6 @@ const Recipes = ({ route, navigation }) => {
       <View>
         {recipeList.length ?  
         <ScrollView>
-          <BannerAd />
           {recipeList.map((item) => {
             return(
               <View key={item.id} style={styles.optionsCard}>

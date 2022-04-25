@@ -5,7 +5,6 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import Line from '../shared/Line';
 import CheckBox  from 'react-native-check-box';
-import BannerAd from '../shared/BannerAd';
 const color = "#5EC87C";
 const darkColor = "#349850";
 const yellow ="#f5c71a";
@@ -50,7 +49,6 @@ const Home = ({navigation}) => {
     
     return (  
         <ScrollView style={styles.mainView}>
-            <BannerAd />
             <View style={styles.optionsCard}>
                 <Text style={styles.headerText}>DIET (OPTIONAL)</Text>
                 <Line />

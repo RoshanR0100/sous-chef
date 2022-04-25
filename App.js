@@ -1,15 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-//import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-//import { AntDesign } from '@expo/vector-icons'; 
-
 import Home from './screens/Home';
 import Recipes from './screens/Recipes';
 import RecipeData from './screens/RecipeData';
-// import Profile from './screens/Profile';
-// import Header from './shared/Header';
-
-// import {Text} from 'react-native';
+import { AdMobBanner } from 'expo-ads-admob'
 
 const color = "#5EC87C";
 
@@ -18,6 +12,10 @@ const Stack = createNativeStackNavigator();
 function StackNavigator() {
   return (
     <NavigationContainer>
+      <AdMobBanner 
+        bannerSize="fullBanner"
+        adUnitID="ca-app-pub-7021618864134355/4250418770" 
+      />
       <Stack.Navigator initialRouteName='Home'>
         <Stack.Screen 
           name='Home'  
