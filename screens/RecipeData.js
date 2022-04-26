@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { View, Text, ScrollView, StyleSheet, Image } from "react-native";
-import { Card } from 'react-native-elements';
+import { AdMobBanner } from 'expo-ads-admob';
 import HTMLView from 'react-native-htmlview';
 
 const color = "#5EC87C";
@@ -25,6 +25,10 @@ const RecipeData = ({route, navigation}) => {
 
     return(
     <ScrollView>
+        <AdMobBanner 
+          bannerSize="fullBanner"
+          adUnitID="ca-app-pub-7021618864134355/4250418770" 
+        />
         <View style={styles.optionsCard}>
             <Image
                 style={styles.image}

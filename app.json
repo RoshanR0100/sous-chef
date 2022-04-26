@@ -2,7 +2,7 @@
   "expo": {
     "name": "sous-chef",
     "slug": "sous-chef",
-    "version": "1.0.5",
+    "version": "1.0.7",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -33,7 +33,7 @@
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-7021618864134355~2330547037"
       },
-      "versionCode": 5
+      "versionCode": 7
     },
     "web": {
       "favicon": "./assets/icon.png"

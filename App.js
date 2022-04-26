@@ -3,55 +3,50 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './screens/Home';
 import Recipes from './screens/Recipes';
 import RecipeData from './screens/RecipeData';
-import { AdMobBanner } from 'expo-ads-admob'
 
 const color = "#5EC87C";
 
 const Stack = createNativeStackNavigator();
 
 function StackNavigator() {
-  return (
-    <NavigationContainer>
-      <AdMobBanner 
-        bannerSize="fullBanner"
-        adUnitID="ca-app-pub-7021618864134355/4250418770" 
-      />
-      <Stack.Navigator initialRouteName='Home'>
-        <Stack.Screen 
-          name='Home'  
-          component={Home} 
-          options={{
-            title: 'SOUS CHEF',
-            headerTintColor: color,
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
-            headerTitleAlign: 'center',
+  return (      
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName='Home'>
+          <Stack.Screen 
+            name='Home'  
+            component={Home} 
+            options={{
+              title: 'SOUS CHEF',
+              headerTintColor: color,
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+              headerTitleAlign: 'center',
             }} />
-        <Stack.Screen 
-          name="Recipes" 
-          component={Recipes} 
-          options={{
-            title: 'RECIPES',
-            headerTintColor: color,
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
-            headerTitleAlign: 'center',
+          <Stack.Screen 
+            name="Recipes" 
+            component={Recipes} 
+            options={{
+              title: 'RECIPES',
+              headerTintColor: color,
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+              headerTitleAlign: 'center',
             }} />
-        <Stack.Screen 
-          name="RecipeData" 
-          component={RecipeData} 
-          options={{
-            title: 'RECIPE',
-            headerTintColor: color,
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
-            headerTitleAlign: 'center',
+          <Stack.Screen 
+            name="RecipeData" 
+            component={RecipeData} 
+            options={{
+              title: 'RECIPE',
+              headerTintColor: color,
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+              headerTitleAlign: 'center',
             }}/>
-      </Stack.Navigator>
-    </NavigationContainer>
+        </Stack.Navigator>
+      </NavigationContainer>
   );
 }
 
